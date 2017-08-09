@@ -19,7 +19,7 @@ const ROOT_CHART = {
   1 : "minor",
   2 : "minor",
   3 : "minor",
-  4 : "minort",
+  4 : "minor",
   5 : "major",
   6 : "diminished",
   7 : "dominant",
@@ -46,15 +46,18 @@ const CHORD_QUALITY = {
   "diminished" : [0, 4, 6, 10]
 }
 
-function midiRoot(n) {
+function midiBase(n) {
   return n % 12;
 }
 
 // Calculate simple root harmonies based on incoming midi note
-function generateRootHarmony(root, type, key) {
+function generateRootHarmony(root, type, key, scaleType) {
   let chordArray = [];
-  for (let i = 0; i < CHORD_TYPE[type]; i++) {
-    chordArray.push(root + CHORD_QUALITY[ROOT_CHART[midiRoot(root)]][i]);
+  for (let i = 0; i <= CHORD_TYPE[type]; i++) {
+    // First we find the base MIDI note (0-12) -> midiBase(root)
+    // Then we derive which chord quality to generate in a give scale -> ROOT_CHART[midiBase(root)]
+    // Then we add the basic chord quality array to the root note
+    chordArray.push(root + CHORD_QUALITY[ROOT_CHART[midiBase(root)]][i]);
   }
   return chordArray;
 }
