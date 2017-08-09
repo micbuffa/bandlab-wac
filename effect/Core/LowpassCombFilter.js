@@ -1,5 +1,3 @@
-'use strict';
-
 // LowpassCombfilter for freeverb
 //
 //

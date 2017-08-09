@@ -1,3 +1,4 @@
+const Lfo = require('./Lfo');
 
 module.exports = Chorus;
 

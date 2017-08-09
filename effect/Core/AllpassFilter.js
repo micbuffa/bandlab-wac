@@ -1,5 +1,3 @@
-'use strict';
-
 // Allpass filer for freeverb
 //
 //                    -g

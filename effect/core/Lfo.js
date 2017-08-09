@@ -1,7 +1,5 @@
-module.exports = Lfo;
-
 /**
- * Simple sine low-frequency oscillator
+ * Simple low-frequency oscillator
  *
  * @param {AudioContext} audioContext Web Audio API context
  * @param {Object} params Parameters to construct the node
