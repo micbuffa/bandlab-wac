@@ -1,5 +1,3 @@
-'use strict';
-
 const AllpassFilter = require('./AllpassFilter');
 const LowpassCombFilter = require('./LowpassCombFilter');
 
