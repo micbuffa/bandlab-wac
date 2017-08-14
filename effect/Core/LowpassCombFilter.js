@@ -12,11 +12,9 @@
 // f : feedback gain
 //
 
-module.exports = LowpassCombFilter;
-
 const processBufferDelay = 128 / 44100; // Webkit processing buffer size
 
-function LowpassCombFilter(context) {
+export default function LowpassCombFilter(context) {
   const node = context.createDelay(0.1);
   var adjDelay = context.createDelay(0.01);
   adjDelay.delayTime.value = processBufferDelay;

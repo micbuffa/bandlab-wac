@@ -1,8 +1,6 @@
-const Lfo = require('./Lfo');
+import Lfo from './Lfo';
 
-module.exports = Chorus;
-
-function Chorus(audioaudioContext) {
+export default function Chorus(audioContext) {
   const node = audioContext.createGain();
   node.channelCountMode = 'explicit';
   node.channelCount = 2;

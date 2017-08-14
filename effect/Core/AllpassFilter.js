@@ -1,4 +1,4 @@
-// Allpass filer for freeverb
+// Allpass filter for freeverb
 //
 //                    -g
 //         ┌──────────────────────┐
@@ -9,11 +9,9 @@
 //                     g
 //
 
-module.exports = AllpassFilter;
-
 const processBufferDelay = 128 / 44100; // Webkit processing buffer size
 
-function AllpassFilter(context) {
+export default function AllpassFilter(context) {
   const node = context.createGain();
   const delay = context.createDelay(0.05);
   const adjDelay = context.createDelay(0.01);

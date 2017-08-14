@@ -8,7 +8,7 @@
  * @param {Number} params.amplitude Amplitude
  * @constructor
  */
-function Lfo(audioContext, params) {
+export default function Lfo(audioContext, params) {
   this.context = audioContext;
   this.rangeScaler = audioContext.createGain();
   this.rangeScaler.channelCount = 1;

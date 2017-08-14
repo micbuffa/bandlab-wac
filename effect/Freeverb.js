@@ -1,13 +1,11 @@
-const AllpassFilter = require('./AllpassFilter');
-const LowpassCombFilter = require('./LowpassCombFilter');
+import AllpassFilter from './AllpassFilter';
+import LowpassCombFilter from './LowpassCombFilter';
 
 // All delay times in the below filter tunings must be bigger numbers than 128/44100
 const combFilterTunings = [1557 / 44100, 1617 / 44100, 1491 / 44100, 1422 / 44100, 1277 / 44100, 1356 / 44100, 1188 / 44100, 1116 / 44100];
 const allpassFilterTunings = [225 / 44100, 556 / 44100, 441 / 44100, 341 / 44100];
 
-module.exports = Freeverb;
-
-function Freeverb(audioContext) {
+export default function Freeverb(audioContext) {
   const node = audioContext.createGain();
   node.channelCountMode = 'explicit';
   node.channelCount = 2;
