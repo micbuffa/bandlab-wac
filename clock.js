@@ -1,19 +1,27 @@
 import { audioCtx } from './sampler.js';
 
-const SCHEDULE_AHEAD = 1;
+
 const worker = new Worker('./ticker.js');
+const callbacks = [];
+
+export const SCHEDULE_AHEAD = 1;
+
+export function onTick(fn) {
+  callbacks.push(fn);
+}
 
 let lastScheduleTime = audioCtx.currentTime;
 
-worker.addEventListener('message', schedule);
-
-function schedule() {
+worker.addEventListener('message', function() {
   const currentTime = audioCtx.currentTime;
 
   if (lastScheduleTime > currentTime + SCHEDULE_AHEAD) {
     return;
   }
 
-  // Schedule some audio events occuring over the next second...
-  // lastScheduleTime must increase as events are scheduled
-}
+  for (let i = 0; i <= callbacks.length; i++) {
+    callbacks[i]();
+  }
+
+  lastScheduleTime = currentTime + SCHEDULE_AHEAD;
+});
