@@ -5,7 +5,7 @@
   "release": 0.133,
   "samples": [
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "025-StringOrchestra_C#0_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 3.999002,
       "loopStart": 1.087007,
@@ -17,7 +17,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "028-StringOrchestra_E0_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.141224,
       "loopStart": 1.229229,
@@ -29,7 +29,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "031_StringOrchestra_G0_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.230045,
       "loopStart": 1.31805,
@@ -41,7 +41,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "034_StringOrchestra_A#0_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.230113,
       "loopStart": 1.318118,
@@ -53,7 +53,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "037_StringOrchestra_C#1_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.123447,
       "loopStart": 1.211451,
@@ -65,7 +65,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "040_StringOrchestra_E1_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.105669,
       "loopStart": 1.193673,
@@ -77,7 +77,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "043_StringOrchestra_G1_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.194558,
       "loopStart": 1.282562,
@@ -89,7 +89,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "046_StringOrchestra_A#1_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.230113,
       "loopStart": 1.318118,
@@ -101,7 +101,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "049_StringOrchestra_C#2_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.283447,
       "loopStart": 1.478118,
@@ -113,7 +113,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "052_StringOrchestra_E2_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.33678,
       "loopStart": 1.424785,
@@ -125,7 +125,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "055_StringOrchestra_G2_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 3.999002,
       "loopStart": 1.087007,
@@ -137,7 +137,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "058_StringOrchestra_A#2_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.105669,
       "loopStart": 1.193673,
@@ -149,7 +149,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "061_StringOrchestra_C#3_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 3.999002,
       "loopStart": 1.087007,
@@ -161,7 +161,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "064_StringOrchestra_E3_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.17678,
       "loopStart": 1.264785,
@@ -173,7 +173,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "067_StringOrchestra_G3_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.158957,
       "loopStart": 1.246961,
@@ -185,7 +185,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "070_StringOrchestra_A#3_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.087891,
       "loopStart": 1.175896,
@@ -197,7 +197,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "073_StringOrchestra_C#4_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.123447,
       "loopStart": 1.211451,
@@ -209,7 +209,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "076_StringOrchestra_E4_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.194558,
       "loopStart": 1.282562,
@@ -221,7 +221,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "079_StringOrchestra_G4_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.123447,
       "loopStart": 1.211451,
@@ -233,7 +233,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "082_StringOrchestra_A#4_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.123447,
       "loopStart": 1.211451,
@@ -245,7 +245,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "085_StringOrchestra_C#5_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.212336,
       "loopStart": 1.30034,
@@ -257,7 +257,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "088_StringOrchestra_E5_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.159002,
       "loopStart": 1.247007,
@@ -269,7 +269,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "091_StringOrchestra_G5_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.159002,
       "loopStart": 1.247007,
@@ -281,7 +281,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "094_StringOrchestra_A#5_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.49678,
       "loopStart": 1.744785,
@@ -293,7 +293,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "097_StringOrchestra_C#6_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.212336,
       "loopStart": 1.30034,
@@ -305,7 +305,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "100_StringOrchestra_E6_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 4.141224,
       "loopStart": 1.229229,
@@ -317,7 +317,7 @@
       }
     },
     {
-      "crossfade": 0,
+      "crossfade": 0.735011,
       "fileName": "102_StringOrchestra_F#6_ls-02.228_le-7.064_cf-01.907",
       "loopEnd": 3.999002,
       "loopStart": 1.087007,
