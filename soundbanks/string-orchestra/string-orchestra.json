@@ -1,0 +1,333 @@
+{
+  "category": "instrument",
+  "instrumentSlug": "strings",
+  "name": "String Orchestra",
+  "release": 0.133,
+  "samples": [
+    {
+      "crossfade": 0,
+      "fileName": "025-StringOrchestra_C#0_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 3.999002,
+      "loopStart": 1.087007,
+      "maxRange": 26,
+      "midiNumber": 25,
+      "minRange": 24,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/025-StringOrchestra_C%230_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "028-StringOrchestra_E0_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.141224,
+      "loopStart": 1.229229,
+      "maxRange": 29,
+      "midiNumber": 28,
+      "minRange": 27,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/028-StringOrchestra_E0_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "031_StringOrchestra_G0_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.230045,
+      "loopStart": 1.31805,
+      "maxRange": 32,
+      "midiNumber": 31,
+      "minRange": 30,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/031_StringOrchestra_G0_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "034_StringOrchestra_A#0_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.230113,
+      "loopStart": 1.318118,
+      "maxRange": 35,
+      "midiNumber": 34,
+      "minRange": 33,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/034_StringOrchestra_A%230_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "037_StringOrchestra_C#1_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.123447,
+      "loopStart": 1.211451,
+      "maxRange": 38,
+      "midiNumber": 37,
+      "minRange": 36,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/037_StringOrchestra_C%231_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "040_StringOrchestra_E1_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.105669,
+      "loopStart": 1.193673,
+      "maxRange": 41,
+      "midiNumber": 40,
+      "minRange": 39,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/040_StringOrchestra_E1_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "043_StringOrchestra_G1_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.194558,
+      "loopStart": 1.282562,
+      "maxRange": 44,
+      "midiNumber": 43,
+      "minRange": 42,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/043_StringOrchestra_G1_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "046_StringOrchestra_A#1_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.230113,
+      "loopStart": 1.318118,
+      "maxRange": 47,
+      "midiNumber": 46,
+      "minRange": 45,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/046_StringOrchestra_A%231_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "049_StringOrchestra_C#2_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.283447,
+      "loopStart": 1.478118,
+      "maxRange": 50,
+      "midiNumber": 49,
+      "minRange": 48,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/049_StringOrchestra_C%232_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "052_StringOrchestra_E2_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.33678,
+      "loopStart": 1.424785,
+      "maxRange": 53,
+      "midiNumber": 52,
+      "minRange": 51,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/052_StringOrchestra_E2_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "055_StringOrchestra_G2_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 3.999002,
+      "loopStart": 1.087007,
+      "maxRange": 56,
+      "midiNumber": 55,
+      "minRange": 54,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/055_StringOrchestra_G2_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "058_StringOrchestra_A#2_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.105669,
+      "loopStart": 1.193673,
+      "maxRange": 59,
+      "midiNumber": 58,
+      "minRange": 57,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/058_StringOrchestra_A%232_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "061_StringOrchestra_C#3_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 3.999002,
+      "loopStart": 1.087007,
+      "maxRange": 62,
+      "midiNumber": 61,
+      "minRange": 60,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/061_StringOrchestra_C%233_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "064_StringOrchestra_E3_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.17678,
+      "loopStart": 1.264785,
+      "maxRange": 65,
+      "midiNumber": 64,
+      "minRange": 63,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/064_StringOrchestra_E3_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "067_StringOrchestra_G3_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.158957,
+      "loopStart": 1.246961,
+      "maxRange": 68,
+      "midiNumber": 67,
+      "minRange": 66,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/067_StringOrchestra_G3_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "070_StringOrchestra_A#3_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.087891,
+      "loopStart": 1.175896,
+      "maxRange": 71,
+      "midiNumber": 70,
+      "minRange": 69,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/070_StringOrchestra_A%233_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "073_StringOrchestra_C#4_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.123447,
+      "loopStart": 1.211451,
+      "maxRange": 74,
+      "midiNumber": 73,
+      "minRange": 72,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/073_StringOrchestra_C%234_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "076_StringOrchestra_E4_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.194558,
+      "loopStart": 1.282562,
+      "maxRange": 77,
+      "midiNumber": 76,
+      "minRange": 75,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/076_StringOrchestra_E4_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "079_StringOrchestra_G4_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.123447,
+      "loopStart": 1.211451,
+      "maxRange": 80,
+      "midiNumber": 79,
+      "minRange": 78,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/079_StringOrchestra_G4_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "082_StringOrchestra_A#4_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.123447,
+      "loopStart": 1.211451,
+      "maxRange": 83,
+      "midiNumber": 82,
+      "minRange": 81,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/082_StringOrchestra_A%234_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "085_StringOrchestra_C#5_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.212336,
+      "loopStart": 1.30034,
+      "maxRange": 86,
+      "midiNumber": 85,
+      "minRange": 84,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/085_StringOrchestra_C%235_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "088_StringOrchestra_E5_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.159002,
+      "loopStart": 1.247007,
+      "maxRange": 89,
+      "midiNumber": 88,
+      "minRange": 87,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/088_StringOrchestra_E5_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "091_StringOrchestra_G5_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.159002,
+      "loopStart": 1.247007,
+      "maxRange": 92,
+      "midiNumber": 91,
+      "minRange": 90,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/091_StringOrchestra_G5_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "094_StringOrchestra_A#5_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.49678,
+      "loopStart": 1.744785,
+      "maxRange": 95,
+      "midiNumber": 94,
+      "minRange": 93,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/094_StringOrchestra_A%235_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "097_StringOrchestra_C#6_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.212336,
+      "loopStart": 1.30034,
+      "maxRange": 98,
+      "midiNumber": 97,
+      "minRange": 96,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/097_StringOrchestra_C%236_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "100_StringOrchestra_E6_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 4.141224,
+      "loopStart": 1.229229,
+      "maxRange": 101,
+      "midiNumber": 100,
+      "minRange": 99,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/100_StringOrchestra_E6_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    },
+    {
+      "crossfade": 0,
+      "fileName": "102_StringOrchestra_F#6_ls-02.228_le-7.064_cf-01.907",
+      "loopEnd": 3.999002,
+      "loopStart": 1.087007,
+      "maxRange": 103,
+      "midiNumber": 102,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/string-orchestra/102_StringOrchestra_F%236_ls-02.228_le-7.064_cf-01.907.ogg"
+      }
+    }
+  ],
+  "slug": "string-orchestra"
+}
