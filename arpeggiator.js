@@ -1,4 +1,5 @@
 import { audioCtx } from './sampler.js';
+import './clock.js';
 
 const ARP_QUALITY = {
   "basic" : [0, 7],
@@ -71,15 +72,7 @@ function genArpArray(arpQuality) { // generate array of notes to be played
 function Arpeggiator() {
 }
 
-Arpeggiator.prototype = {
-  start : function() {
-  },
-  stop : function() {
-  },
-  range : 1,
-  type : "ascend",
-  tempo : 120
-}
+
 // FOR TESTING
 // for (let i = 0; i < 25; i++) {
 //   ARP_TYPE.descend(x);
