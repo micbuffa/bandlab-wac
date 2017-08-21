@@ -19,7 +19,7 @@ worker.addEventListener('message', function() {
     return;
   }
 
-  for (let i = 0; i <= callbacks.length; i++) {
+  for (let i = 0; i < callbacks.length; i++) {
     callbacks[i]();
   }
 
