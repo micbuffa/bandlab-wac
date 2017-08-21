@@ -1,0 +1,129 @@
+{
+  "category": "instrument",
+  "instrumentSlug": "piano",
+  "name": "rhodes",
+  "release": 0.133,
+  "samples": [
+    {
+      "crossfade": null,
+      "fileName": "030-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 32,
+      "midiNumber": 30,
+      "minRange": 24,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/030-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "036-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 38,
+      "midiNumber": 36,
+      "minRange": 33,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/036-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "042-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 44,
+      "midiNumber": 42,
+      "minRange": 39,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/042-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "048-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 50,
+      "midiNumber": 48,
+      "minRange": 45,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/048-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "054-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 56,
+      "midiNumber": 54,
+      "minRange": 51,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/054-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "060-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 62,
+      "midiNumber": 60,
+      "minRange": 57,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/060-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "066-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 68,
+      "midiNumber": 66,
+      "minRange": 63,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/066-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "072-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 74,
+      "midiNumber": 72,
+      "minRange": 69,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/072-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "078-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 80,
+      "midiNumber": 78,
+      "minRange": 75,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/078-Rhodes.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "084-Rhodes",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": 88,
+      "midiNumber": 84,
+      "minRange": 81,
+      "urls": {
+        "ogg": "/soundbanks/rhodes/084-Rhodes.ogg"
+      }
+    }
+  ],
+  "slug": "rhodes"
+}

@@ -1,0 +1,189 @@
+{
+  "category": "kit",
+  "instrumentSlug": "drum-kit",
+  "name": "Dry Kit",
+  "release": null,
+  "samples": [
+    {
+      "crossfade": null,
+      "fileName": "036-Kick_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 36,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/036-Kick_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "037-CrossStick_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 37,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/037-CrossStick_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "038-Snare_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 38,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/038-Snare_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "041-FloorTom_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 41,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/041-FloorTom_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "042-HiHatClosed_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 42,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/042-HiHatClosed_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "043-FloorTom_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 43,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/043-FloorTom_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "044-HiHatSemiOpen_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 44,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/044-HiHatSemiOpen_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "045-Tom2_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 45,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/045-Tom2_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "046-HiHatOpen_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 46,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/046-HiHatOpen_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "047-Tom2_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 47,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/047-Tom2_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "048-Tom1_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 48,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/048-Tom1_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "049-Crash_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 49,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/049-Crash_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "050-Tom1_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 50,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/050-Tom1_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "051-Ride_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 51,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/051-Ride_Dry.ogg"
+      }
+    },
+    {
+      "crossfade": null,
+      "fileName": "053-RideBell_Dry",
+      "loopEnd": null,
+      "loopStart": null,
+      "maxRange": null,
+      "midiNumber": 53,
+      "minRange": null,
+      "urls": {
+        "ogg": "/soundbanks/dry-kit/053-RideBell_Dry.ogg"
+      }
+    }
+  ],
+  "slug": "dry-kit"
+}
