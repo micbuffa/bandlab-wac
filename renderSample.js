@@ -1,45 +1,6 @@
 import { audioCtx } from './sampler.js';
 
-// Generate white-noise array for testing purposes.
-function generateTestArray(arrayLength, max) {
-	let testArray = [];
-	for (let i = 0; i < arrayLength; i++) {
-		// testArray.push(Math.random() * (max - min) + min);
-		testArray.push(100);
-	}
-	return testArray;
-}
-
-// Sample Rate
 const SAMPLE_RATE = audioCtx.sampleRate;
-
-// General Norlization Modes
-const NORMALIZE = {
-	"basic": function(bufferArray) {
-		for (let i = 0; i < bufferArray.length; i++) {
-			bufferArray[i] = bufferArray[i] * calcNormCoef(bufferArray);
-		}
-	},
-	"ifClipping": function(bufferArray) {
-		if (bufferMax(bufferArray) > 1) {
-			for (let i = 0; i < bufferArray.length; i++) {
-				bufferArray[i] = bufferArray[i] * calcNormCoef(bufferArray);
-			}
-		}
-	},
-	"toDecibelLevel": function(bufferArray, decibelLevel) {
-		let coef = calcNormCoef(bufferArray);
-		for (let i = 0; i < bufferArray.length; i++) {
-			bufferArray[i] = bufferArray[i] * coef * dbToFloat(decibelLevel);
-		}
-	},
-	"toSignalLevel": function(bufferArray, signalLevel) {
-		let coef = calcNormCoef(bufferArray);
-		for (let i = 0; i < bufferArray.length; i++) {
-			bufferArray[i] = bufferArray[i] * coef * signalLevel;
-		}
-	}
-};
 
 export function includeCrossfade(sample) {
 	const crossfadingAudioBuffer = audioCtx.createBuffer(2, sample.loopEnd * audioCtx.sampleRate, SAMPLE_RATE);
@@ -91,16 +52,6 @@ function secondsToSamples(seconds) {
 	return Math.round(seconds * SAMPLE_RATE);
 }
 
-// Simple slope intercept calculation
-function linearRamp(bufferArray, startPositionInSamples, endPositionInSamples, startValue, endValue) {
-	let m = (endValue - startValue) / (endPositionInSamples - startPositionInSamples);
-	let b = endValue - (m * endPositionInSamples);
-	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
-		bufferArray[i] = bufferArray[i] * (m * i + b);
-	}
-}
-
-
 function fadeIn(bufferArray, startPositionInSamples, endPositionInSamples) {
 	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
 		bufferArray[i] = bufferArray[i] * Math.sin(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
@@ -111,18 +62,4 @@ function fadeOut(bufferArray, startPositionInSamples, endPositionInSamples) {
 	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
 		bufferArray[i] = bufferArray[i] * Math.cos(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
 	}
-}
-
-function bufferMax(bufferArray) {
-	let max = Math.max.apply(Math, bufferArray);
-	let min = Math.min.apply(Math, bufferArray);
-	return Math.max(max, Math.abs(min));
-}
-
-function dbToFloat(dbValue) {
-	return Math.pow(10, (parseFloat(dbValue) * 1 / 20));
-}
-
-function calcNormCoef(bufferArray) {
-	return 1 / bufferMax(bufferArray);
 }
