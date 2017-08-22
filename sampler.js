@@ -2,6 +2,8 @@ import { keyboard } from './instrument.js';
 
 export const audioCtx = new AudioContext();
 
+const MAX_VELOCITY = 128;
+
 const CODE_TO_KEY = {
   8: 'Backspace',
   9: 'Tab',
@@ -109,7 +111,7 @@ export function useSoundbank(soundbank, pianoEl) {
       0;
   }
 
-  function createBufferSource(midiNote) {
+  function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
     const source = audioCtx.createBufferSource();
     const sample = soundbank.samples.find(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote);
     source.buffer = sample.buffer;
@@ -122,8 +124,13 @@ export function useSoundbank(soundbank, pianoEl) {
       source.loopEnd = sample.loopEnd;
     }
 
-    source.connect(audioCtx.destination);
+    const velocityGain = audioCtx.createGain();
+    velocityGain.gain.value = velocity / MAX_VELOCITY;
+    velocityGain.connect(audioCtx.destination);
+
+    source.connect(velocityGain);
     source.start();
+
     return source;
   }
 }
