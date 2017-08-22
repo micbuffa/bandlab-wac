@@ -65,17 +65,21 @@ const CODE_TO_KEY = {
   222: '\''
 };
 
-export function useSoundbank(soundbankStore, pianoEl) {
+export function useSoundbank(soundbank, pianoEl) {
   const heldNotes = new Map();
 
   document.addEventListener('keydown', function({ keyCode }) {
     const midiNote = keyCode2MidiNote(keyCode);
 
-    if (heldNotes.has(midiNote)) {
+    if (!midiNote) {
       return;
     }
 
-    if (soundbankStore.has(midiNote)) {
+    if (!soundbank.samples.some(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote)) {
+      return;
+    }
+
+    if (!heldNotes.has(midiNote)) {
       heldNotes.set(midiNote, createBufferSource(midiNote));
       pianoEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.add('active');
     }
@@ -83,6 +87,14 @@ export function useSoundbank(soundbankStore, pianoEl) {
 
   document.addEventListener('keyup', function({ keyCode }) {
     const midiNote = keyCode2MidiNote(keyCode);
+
+    if (!midiNote) {
+      return;
+    }
+
+    if (!soundbank.samples.some(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote)) {
+      return;
+    }
 
     if (heldNotes.has(midiNote)) {
       heldNotes.get(midiNote).stop();
@@ -99,9 +111,16 @@ export function useSoundbank(soundbankStore, pianoEl) {
 
   function createBufferSource(midiNote) {
     const source = audioCtx.createBufferSource();
-    source.buffer = soundbankStore.get(midiNote);
+    const sample = soundbank.samples.find(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote);
+    source.buffer = sample.buffer;
+    source.playbackRate.value = getPlaybackRate(midiNote - sample.midiNumber)
     source.connect(audioCtx.destination);
     source.start();
     return source;
   }
+}
+
+function getPlaybackRate(shift) {
+  const SEMITONES_PER_OCTAVE = 12;
+  return Math.pow(2, shift / SEMITONES_PER_OCTAVE);
 }
