@@ -69,7 +69,9 @@ function genArpArray(arpQuality) { // generate array of notes to be played
 	}
 }
 
-function Arpeggiator() {
+function Arpeggiator(bpm, subdivision, midiNoteArray, arpQuality, arpType) {
+
+[76, 20, 128]
 }
 
 
