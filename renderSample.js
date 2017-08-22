@@ -1,10 +1,11 @@
 import { audioCtx } from './sampler.js';
 
 // Generate white-noise array for testing purposes.
-function generateTestArray(arrayLength, max, min) {
+function generateTestArray(arrayLength, max) {
 	let testArray = [];
 	for (let i = 0; i < arrayLength; i++) {
-		testArray.push(Math.random() * (max - min) + min);
+		// testArray.push(Math.random() * (max - min) + min);
+		testArray.push(100);
 	}
 	return testArray;
 }
@@ -41,7 +42,7 @@ const NORMALIZE = {
 };
 
 export function includeCrossfade(sample) {
-	const crossfadingAudioBuffer = audioCtx.createBuffer(2, (sample.loopEnd + sample.crossfade) * audioCtx.sampleRate, SAMPLE_RATE);
+	const crossfadingAudioBuffer = audioCtx.createBuffer(2, sample.loopEnd * audioCtx.sampleRate, SAMPLE_RATE);
 
 	for (let channel = 0; channel < sample.buffer.numberOfChannels; channel++) {
 		const crossfadingArrayBuffer = genPlaybackBuffer(sample.buffer.getChannelData(channel), sample.loopStart, sample.loopEnd, sample.crossfade);
@@ -53,7 +54,6 @@ export function includeCrossfade(sample) {
 
 // Pre-process the sample for playback
 function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
-	// console.log(bufferArray);
 	let processedBuffer = [];
 
 	// Convert loopStart, loopEnd, crossfade to samples for sanity purposes
@@ -69,16 +69,16 @@ function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 	// Make a temp buffer to add crossfades at end of sample
 	let tempBuffer = [];
 
-	// Copy section to be faded in to end of buffer -> This makes summing easier
+	// Copy section to be faded in to end of tempBuffer -> This makes summing easier
 	for (let i = loopStart - crossfade; i < loopStart; i++) {
 		tempBuffer[i + (loopEnd - loopStart)] = processedBuffer[i];
 	}
 
 	// Compute
-	linearRamp(tempBuffer, loopEnd - crossfade, loopEnd, 1, 0);
-	linearRamp(processedBuffer, loopEnd - crossfade, loopEnd, 0, 1);
+	fadeIn(tempBuffer, loopEnd - crossfade, loopEnd);
+	fadeOut(processedBuffer, loopEnd - crossfade, loopEnd);
 
-	// // Sum fades
+	// Sum fades
 	for (let i = loopEnd - crossfade; i < loopEnd; i++) {
 		processedBuffer[i] = processedBuffer[i] + tempBuffer[i];
 	}
@@ -88,7 +88,7 @@ function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 }
 
 function secondsToSamples(seconds) {
-	return seconds * SAMPLE_RATE
+	return Math.round(seconds * SAMPLE_RATE);
 }
 
 // Simple slope intercept calculation
@@ -98,7 +98,19 @@ function linearRamp(bufferArray, startPositionInSamples, endPositionInSamples, s
 	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
 		bufferArray[i] = bufferArray[i] * (m * i + b);
 	}
-	return bufferArray;
+}
+
+
+function fadeIn(bufferArray, startPositionInSamples, endPositionInSamples) {
+	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
+		bufferArray[i] = bufferArray[i] * Math.sin(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
+	}
+}
+
+function fadeOut(bufferArray, startPositionInSamples, endPositionInSamples) {
+	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
+		bufferArray[i] = bufferArray[i] * Math.cos(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
+	}
 }
 
 function bufferMax(bufferArray) {
