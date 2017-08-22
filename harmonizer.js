@@ -51,7 +51,7 @@ function midiBase(n) {
 }
 
 // Calculate simple root harmonies based on incoming midi note
-function generateRootHarmony(root, type) {
+export function generateRootHarmony(root, type) {
   let chordArray = [];
   for (let i = 0; i <= CHORD_TYPE[type]; i++) {
     // First we find the base MIDI note (0-12) -> midiBase(root)

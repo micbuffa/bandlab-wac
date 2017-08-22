@@ -1,8 +1,11 @@
 import { keyboard } from './instrument.js';
+import { generateRootHarmony } from './harmonizer.js';
 
 export const audioCtx = new AudioContext();
 
 const MAX_VELOCITY = 128;
+
+const HARMONY_TYPE = "thirds";
 
 const CODE_TO_KEY = {
   8: 'Backspace',
@@ -72,7 +75,24 @@ export function useSoundbank(soundbank, pianoEl) {
 
   document.addEventListener('keydown', function({ keyCode }) {
     const midiNote = keyCode2MidiNote(keyCode);
+    const noteArray = generateRootHarmony(midiNote, HARMONY_TYPE);
+    noteArray.forEach( x => playNote(x));
+  });
 
+  document.addEventListener('keyup', function({ keyCode }) {
+    const midiNote = keyCode2MidiNote(keyCode);
+    const noteArray = generateRootHarmony(midiNote, HARMONY_TYPE);
+    noteArray.forEach( x => stopNote(x));
+
+  });
+
+  function keyCode2MidiNote(keyCode) {
+    return keyboard.includes(CODE_TO_KEY[keyCode]) ?
+      keyboard.indexOf(CODE_TO_KEY[keyCode]) + 24 :
+      0;
+  }
+
+  function playNote(midiNote) {
     if (!midiNote) {
       return;
     }
@@ -85,11 +105,9 @@ export function useSoundbank(soundbank, pianoEl) {
       heldNotes.set(midiNote, createBufferSource(midiNote));
       pianoEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.add('active');
     }
-  });
+  }
 
-  document.addEventListener('keyup', function({ keyCode }) {
-    const midiNote = keyCode2MidiNote(keyCode);
-
+  function stopNote(midiNote) {
     if (!midiNote) {
       return;
     }
@@ -103,12 +121,6 @@ export function useSoundbank(soundbank, pianoEl) {
       heldNotes.delete(midiNote);
       pianoEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.remove('active');
     }
-  });
-
-  function keyCode2MidiNote(keyCode) {
-    return keyboard.includes(CODE_TO_KEY[keyCode]) ?
-      keyboard.indexOf(CODE_TO_KEY[keyCode]) + 24 :
-      0;
   }
 
   function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
