@@ -2,13 +2,15 @@ import { audioCtx } from './sampler.js';
 
 // Generate white-noise array for testing purposes.
 function generateTestArray(arrayLength, max, min) {
+	let testArray = [];
 	for (let i = 0; i < arrayLength; i++) {
 		testArray.push(Math.random() * (max - min) + min);
 	}
+	return testArray;
 }
 
 // Sample Rate
-const SAMPLE_RATE = 44100;
+const SAMPLE_RATE = audioCtx.sampleRate;
 
 // General Norlization Modes
 const NORMALIZE = {
@@ -36,10 +38,10 @@ const NORMALIZE = {
 			bufferArray[i] = bufferArray[i] * coef * signalLevel;
 		}
 	}
-}
+};
 
 export function includeCrossfade(sample) {
-	const crossfadingAudioBuffer = audioCtx.createBuffer(2, (sample.loopEnd + sample.crossfade) * audioCtx.sampleRate, audioCtx.sampleRate);
+	const crossfadingAudioBuffer = audioCtx.createBuffer(2, (sample.loopEnd + sample.crossfade) * audioCtx.sampleRate, SAMPLE_RATE);
 
 	for (let channel = 0; channel < sample.buffer.numberOfChannels; channel++) {
 		const crossfadingArrayBuffer = genPlaybackBuffer(sample.buffer.getChannelData(channel), sample.loopStart, sample.loopEnd, sample.crossfade);
@@ -51,6 +53,7 @@ export function includeCrossfade(sample) {
 
 // Pre-process the sample for playback
 function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
+	// console.log(bufferArray);
 	let processedBuffer = [];
 
 	// Convert loopStart, loopEnd, crossfade to samples for sanity purposes
@@ -72,15 +75,14 @@ function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 	}
 
 	// Compute
-	linearRamp(tempBuffer, loopEnd - crossfade, tempBuffer.length, 0, 1);
-	linearRamp(processedBuffer, loopEnd - crossfade, processedBuffer.length, 1, 0);
+	linearRamp(tempBuffer, loopEnd - crossfade, loopEnd, 1, 0);
+	linearRamp(processedBuffer, loopEnd - crossfade, loopEnd, 0, 1);
 
-	// Sum fades
-	for (let i = loopEnd - crossfade; i < processedBuffer.length; i++) {
+	// // Sum fades
+	for (let i = loopEnd - crossfade; i < loopEnd; i++) {
 		processedBuffer[i] = processedBuffer[i] + tempBuffer[i];
 	}
 
-	// Normalize to -8 dB to avoid clipping
 	return Float32Array.from(processedBuffer);
 
 }
@@ -94,7 +96,7 @@ function linearRamp(bufferArray, startPositionInSamples, endPositionInSamples, s
 	let m = (endValue - startValue) / (endPositionInSamples - startPositionInSamples);
 	let b = endValue - (m * endPositionInSamples);
 	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
-		bufferArray[i] = m * i + b;
+		bufferArray[i] = bufferArray[i] * (m * i + b);
 	}
 	return bufferArray;
 }
