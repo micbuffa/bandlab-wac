@@ -1,5 +1,3 @@
-import './clock.js';
-
 import { downloadSoundbank } from './soundbank.js';
 import { renderInstrument } from './instrument.js';
 import { useSoundbank } from './sampler.js';
