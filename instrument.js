@@ -6,20 +6,17 @@ export const keyboard = [
 export function renderInstrument() {
   const keysEl = keyboard.reduce((acc, key, index) => {
 
-    // Note colors, white for flat ones and and black for sharps ones
-    const color = [1, 3, 6, 8, 10].includes(index % 12) ? 'black' : 'white';
-
     // Based on C0 note = code Midi 24
     const midiNote = index + 24;
 
     return `${acc}
-      <div data-key="${key}" data-midi-note="${midiNote}" class="virtual-piano-${color}">
+      <div data-key="${key}" data-midi-note="${midiNote}">
         <span>${key} ${midiNote}</span>
       </div>
     `;
   }, '');
 
-  const pianoEl = document.createElement('div');
-  pianoEl.innerHTML = keysEl;
-  return pianoEl;
+  const keyboardEl = document.createElement('div');
+  keyboardEl.innerHTML = keysEl;
+  return keyboardEl;
 }
