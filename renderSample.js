@@ -1,3 +1,5 @@
+import { audioCtx } from './sampler.js';
+
 // Generate white-noise array for testing purposes.
 function generateTestArray(arrayLength, max, min) {
 	for (let i = 0; i < arrayLength; i++) {
@@ -36,8 +38,19 @@ const NORMALIZE = {
 	}
 }
 
+export function includeCrossfade(sample) {
+	const crossfadingAudioBuffer = audioCtx.createBuffer(2, (sample.loopEnd + sample.crossfade) * audioCtx.sampleRate, audioCtx.sampleRate);
+
+	for (let channel = 0; channel < sample.buffer.numberOfChannels; channel++) {
+		const crossfadingArrayBuffer = genPlaybackBuffer(sample.buffer.getChannelData(channel), sample.loopStart, sample.loopEnd, sample.crossfade);
+		crossfadingAudioBuffer.copyToChannel(crossfadingArrayBuffer, channel);
+	}
+
+	sample.buffer = crossfadingAudioBuffer;
+}
+
 // Pre-process the sample for playback
-export function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
+function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 	let processedBuffer = [];
 
 	// Convert loopStart, loopEnd, crossfade to samples for sanity purposes
@@ -68,7 +81,7 @@ export function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 	}
 
 	// Normalize to -8 dB to avoid clipping
-	return processedBuffer;
+	return Float32Array.from(processedBuffer);
 
 }
 

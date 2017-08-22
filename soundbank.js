@@ -1,5 +1,5 @@
 import { audioCtx } from './sampler.js';
-import { genPlaybackBuffer } from './renderSample.js';
+import { includeCrossfade } from './renderSample.js';
 
 const SAMPLE_LIST = '/soundbanks/string-orchestra/string-orchestra.json';
 // const SAMPLE_LIST = '/soundbanks/dry-kit/dry-kit.json';
@@ -12,16 +12,14 @@ export async function downloadSoundbank() {
       const promises = json.samples.map(sample => {
         return fetch(sample.urls.ogg)
           .then(res => res.arrayBuffer())
-          .then(arrayBuffer => {
+          .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
+          .then(audioBuffer => {
+            sample.buffer = audioBuffer;
+
             if (sample.loopStart && sample.loopEnd) {
-              arrayBuffer = genPlaybackBuffer(arrayBuffer, sample.loopStart, sample.loopEnd, sample.crossfade);
+              includeCrossfade(sample);
             }
-
-            console.log(arrayBuffer);
-
-            return audioCtx.decodeAudioData(arrayBuffer);
-          })
-          .then(audioBuffer => sample.buffer = audioBuffer);
+          });
       });
       return Promise.all(promises)
         .then(() => json);
