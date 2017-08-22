@@ -64,9 +64,11 @@ export function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
 	for (let i = loopEnd - crossfade; i < processedBuffer.length; i++) {
 		processedBuffer[i] = processedBuffer[i] + tempBuffer[i];
 	}
-	// Normalize to -8 dB to avoide clipping
-	return NORMALIZE.toDecibelLevel(processedBuffer, -8);
 
+	// Normalize to -8 dB to avoide clipping
+	NORMALIZE.toDecibelLevel(processedBuffer, -8);
+
+	return processedBuffer;
 }
 
 
