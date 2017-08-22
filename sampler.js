@@ -126,8 +126,7 @@ export function useSoundbank(soundbank, pianoEl) {
   function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
     const source = audioCtx.createBufferSource();
     const sample = soundbank.samples.find(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote);
-    source.buffer = sample.buffer;
-
+    source.buffer = sample.audioBuffer;
     source.playbackRate.value = getPlaybackRate(midiNote - sample.midiNumber)
 
     if (sample.loopStart && sample.loopEnd) {

@@ -2,64 +2,53 @@ import { audioCtx } from './sampler.js';
 
 const SAMPLE_RATE = audioCtx.sampleRate;
 
-export function includeCrossfade(sample) {
-	const crossfadingAudioBuffer = audioCtx.createBuffer(2, sample.loopEnd * audioCtx.sampleRate, SAMPLE_RATE);
+export function includeCrossfade(audioBuffer, { loopStart, loopEnd, crossfade }) {
+  const crossfadingAudioBuffer = audioCtx.createBuffer(audioBuffer.numberOfChannels, loopEnd * SAMPLE_RATE, SAMPLE_RATE);
 
-	for (let channel = 0; channel < sample.buffer.numberOfChannels; channel++) {
-		const crossfadingArrayBuffer = genPlaybackBuffer(sample.buffer.getChannelData(channel), sample.loopStart, sample.loopEnd, sample.crossfade);
-		crossfadingAudioBuffer.copyToChannel(crossfadingArrayBuffer, channel);
-	}
+  for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+    const crossfadingChannel = createCrossfade(audioBuffer.getChannelData(channel), { loopStart, loopEnd, crossfade });
+    crossfadingAudioBuffer.copyToChannel(crossfadingChannel, channel);
+  }
 
-	sample.buffer = crossfadingAudioBuffer;
+  return crossfadingAudioBuffer;
 }
 
 // Pre-process the sample for playback
-function genPlaybackBuffer(bufferArray, loopStart, loopEnd, crossfade) {
-	let processedBuffer = [];
+function createCrossfade(arrayBuffer, { loopStart, loopEnd, crossfade }) {
 
-	// Convert loopStart, loopEnd, crossfade to samples for sanity purposes
-	loopStart = secondsToSamples(loopStart);
-	loopEnd = secondsToSamples(loopEnd);
-	crossfade = secondsToSamples(crossfade);
+  // Convert loopStart, loopEnd, crossfade to samples for sanity purposes
+  loopStart = secondsToSamples(loopStart);
+  loopEnd = secondsToSamples(loopEnd);
+  crossfade = secondsToSamples(crossfade);
 
-	// Populate processedBuffer to be max length of loopEnd
-	for (let i = 0; i < loopEnd; i++) {
-		processedBuffer.push(bufferArray[i]);
-	}
+  const fadeOutStart = loopEnd - crossfade;
 
-	// Make a temp buffer to add crossfades at end of sample
-	let tempBuffer = [];
+  const newBuffer = arrayBuffer.slice(0, loopEnd);
+  fadeOut(newBuffer, fadeOutStart, loopEnd);
 
-	// Copy section to be faded in to end of tempBuffer -> This makes summing easier
-	for (let i = loopStart - crossfade; i < loopStart; i++) {
-		tempBuffer[i + (loopEnd - loopStart)] = processedBuffer[i];
-	}
+  const fadeInBuffer = arrayBuffer.slice(loopStart - crossfade, loopStart);
+  fadeIn(fadeInBuffer, 0, fadeInBuffer.length);
 
-	// Compute
-	fadeIn(tempBuffer, loopEnd - crossfade, loopEnd);
-	fadeOut(processedBuffer, loopEnd - crossfade, loopEnd);
+  // Sum fade in and fade out
+  for (let i = 0; i < crossfade; i++) {
+    newBuffer[fadeOutStart + i] = newBuffer[fadeOutStart + i] + fadeInBuffer[i];
+  }
 
-	// Sum fades
-	for (let i = loopEnd - crossfade; i < loopEnd; i++) {
-		processedBuffer[i] = processedBuffer[i] + tempBuffer[i];
-	}
-
-	return Float32Array.from(processedBuffer);
-
+  return newBuffer;
 }
 
 function secondsToSamples(seconds) {
-	return Math.round(seconds * SAMPLE_RATE);
+  return Math.round(seconds * SAMPLE_RATE);
 }
 
-function fadeIn(bufferArray, startPositionInSamples, endPositionInSamples) {
-	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
-		bufferArray[i] = bufferArray[i] * Math.sin(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
-	}
+function fadeIn(arrayBuffer, start, end) {
+  for (let i = start; i < end; i++) {
+    arrayBuffer[i] = arrayBuffer[i] * Math.sin(((i - start) * (Math.PI / ((end - start) * 2))));
+  }
 }
 
-function fadeOut(bufferArray, startPositionInSamples, endPositionInSamples) {
-	for (let i = startPositionInSamples; i < endPositionInSamples; i++) {
-		bufferArray[i] = bufferArray[i] * Math.cos(((i - startPositionInSamples) * (Math.PI / ((endPositionInSamples - startPositionInSamples) * 2))));
-	}
+function fadeOut(arrayBuffer, start, end) {
+  for (let i = start; i < end; i++) {
+    arrayBuffer[i] = arrayBuffer[i] * Math.cos(((i - start) * (Math.PI / ((end - start) * 2))));
+  }
 }

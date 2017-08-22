@@ -14,10 +14,11 @@ export async function downloadSoundbank() {
           .then(res => res.arrayBuffer())
           .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
           .then(audioBuffer => {
-            sample.buffer = audioBuffer;
 
             if (sample.loopStart && sample.loopEnd) {
-              includeCrossfade(sample);
+              sample.audioBuffer = includeCrossfade(audioBuffer, sample);
+            } else {
+              sample.audioBuffer = audioBuffer;
             }
           });
       });
