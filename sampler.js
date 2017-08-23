@@ -81,7 +81,7 @@ function getPlaybackRate(shift) {
   return Math.pow(2, shift / SEMITONES_PER_OCTAVE);
 }
 
-export function useSoundbank(soundbank, pianoEl) {
+export function useSoundbank(soundbank, keyboardEl) {
 
   document.addEventListener('keydown', function({ keyCode }) {
   });

@@ -70,7 +70,7 @@ const CODE_TO_KEY = {
   222: '\''
 };
 
-export function useSoundbank(soundbank, pianoEl) {
+export function useSoundbank(soundbank, keyboardEl) {
   const heldNotes = new Map();
 
   document.addEventListener('keydown', function({ keyCode }) {
@@ -103,7 +103,7 @@ export function useSoundbank(soundbank, pianoEl) {
 
     if (!heldNotes.has(midiNote)) {
       heldNotes.set(midiNote, createBufferSource(midiNote));
-      pianoEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.add('active');
+      keyboardEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.add('active');
     }
   }
 
@@ -119,7 +119,7 @@ export function useSoundbank(soundbank, pianoEl) {
     if (heldNotes.has(midiNote)) {
       heldNotes.get(midiNote).stop();
       heldNotes.delete(midiNote);
-      pianoEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.remove('active');
+      keyboardEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.remove('active');
     }
   }
 
