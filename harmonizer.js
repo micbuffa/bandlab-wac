@@ -34,7 +34,6 @@ const ROOT_CHART = {
 // Triads: https://en.wikipedia.org/wiki/Triad_(music)
 // Sevenths: https://en.wikipedia.org/wiki/Seventh_chord
 const CHORD_TYPE = {
-  root: 0,
   thirds: 1,
   triads: 2,
   sevenths: 3

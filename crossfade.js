@@ -21,10 +21,38 @@ import { audioCtx } from './sampler.js';
 const SAMPLE_RATE = audioCtx.sampleRate;
 
 export function includeCrossfade(audioBuffer, { loopStart, loopEnd, crossfade }) {
+  const crossfadingAudioBuffer = audioCtx.createBuffer(audioBuffer.numberOfChannels, loopEnd * SAMPLE_RATE, SAMPLE_RATE);
+
+  for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+    const crossfadingChannel = createCrossfade(audioBuffer.getChannelData(channel), { loopStart, loopEnd, crossfade });
+    crossfadingAudioBuffer.copyToChannel(crossfadingChannel, channel);
+  }
+
+  return crossfadingAudioBuffer;
 }
 
 // Pre-process the sample for playback
 function createCrossfade(arrayBuffer, { loopStart, loopEnd, crossfade }) {
+
+  // Convert loopStart, loopEnd, crossfade to samples for sanity purposes
+  loopStart = secondsToSamples(loopStart);
+  loopEnd = secondsToSamples(loopEnd);
+  crossfade = secondsToSamples(crossfade);
+
+  const fadeOutStart = loopEnd - crossfade;
+
+  const newBuffer = arrayBuffer.slice(0, loopEnd);
+  fadeOut(newBuffer, fadeOutStart, loopEnd);
+
+  const fadeInBuffer = arrayBuffer.slice(loopStart - crossfade, loopStart);
+  fadeIn(fadeInBuffer, 0, fadeInBuffer.length);
+
+  // Sum fade in and fade out
+  for (let i = 0; i < crossfade; i++) {
+    newBuffer[fadeOutStart + i] = newBuffer[fadeOutStart + i] + fadeInBuffer[i];
+  }
+
+  return newBuffer;
 }
 
 function secondsToSamples(seconds) {

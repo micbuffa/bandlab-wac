@@ -1,6 +1,6 @@
 import { keyboard } from './instrument.js';
 import { generateRootHarmony } from './harmonizer.js';
-import Freeverb from './extras/effect/Freeverb.js';
+import Freeverb from '../extras/effect/Freeverb.js';
 
 export const audioCtx = new AudioContext();
 
@@ -71,31 +71,98 @@ const CODE_TO_KEY = {
   222: '\''
 };
 
-function keyCode2MidiNote(keyCode) {
-  return keyboard.includes(CODE_TO_KEY[keyCode]) ?
-    keyboard.indexOf(CODE_TO_KEY[keyCode]) + 24 :
-    0;
+const freeverb = new Freeverb(audioCtx);
+freeverb.roomSize = 0.8;
+freeverb.dampening = 8000;
+freeverb.spread = 0;
+freeverb.wetDryMix = 0.2;
+
+freeverb.connect(audioCtx.destination);
+
+
+export function useSoundbank(soundbank, keyboardEl) {
+  const heldNotes = new Map();
+
+  document.addEventListener('keydown', function({ keyCode }) {
+    const midiNote = keyCode2MidiNote(keyCode);
+    const noteArray = generateRootHarmony(midiNote, HARMONY_TYPE);
+    noteArray.forEach( x => playNote(x));
+  });
+
+  document.addEventListener('keyup', function({ keyCode }) {
+    const midiNote = keyCode2MidiNote(keyCode);
+    const noteArray = generateRootHarmony(midiNote, HARMONY_TYPE);
+    noteArray.forEach( x => stopNote(x));
+
+  });
+
+  function keyCode2MidiNote(keyCode) {
+    return keyboard.includes(CODE_TO_KEY[keyCode]) ?
+      keyboard.indexOf(CODE_TO_KEY[keyCode]) + 24 :
+      0;
+  }
+
+  function playNote(midiNote) {
+    if (!midiNote) {
+      return;
+    }
+
+    if (!soundbank.samples.some(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote)) {
+      return;
+    }
+
+    if (!heldNotes.has(midiNote)) {
+      heldNotes.set(midiNote, createBufferSource(midiNote));
+      keyboardEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.add('active');
+    }
+  }
+
+  function stopNote(midiNote) {
+    if (!midiNote) {
+      return;
+    }
+
+    if (!soundbank.samples.some(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote)) {
+      return;
+    }
+
+    if (heldNotes.has(midiNote)) {
+      const note = heldNotes.get(midiNote);
+      note.source.stop(audioCtx.currentTime + 0.1);
+      note.releaseGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+      heldNotes.delete(midiNote);
+      keyboardEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.remove('active');
+    }
+  }
+
+  function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
+    const source = audioCtx.createBufferSource();
+    const velocityGain = audioCtx.createGain();
+    const releaseGain = audioCtx.createGain();
+
+    const sample = soundbank.samples.find(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote);
+    source.buffer = sample.audioBuffer;
+    source.playbackRate.value = getPlaybackRate(midiNote - sample.midiNumber)
+
+    if (sample.loopStart && sample.loopEnd) {
+      source.loop = true;
+      source.loopStart = sample.loopStart;
+      source.loopEnd = sample.loopEnd;
+    }
+
+    source.start();
+    source.connect(velocityGain);
+
+    velocityGain.gain.value = velocity / MAX_VELOCITY;
+    velocityGain.connect(releaseGain);
+
+    releaseGain.connect(freeverb);
+
+    return { source, velocityGain, releaseGain };
+  }
 }
 
 function getPlaybackRate(shift) {
   const SEMITONES_PER_OCTAVE = 12;
   return Math.pow(2, shift / SEMITONES_PER_OCTAVE);
-}
-
-export function useSoundbank(soundbank, keyboardEl) {
-
-  document.addEventListener('keydown', function({ keyCode }) {
-  });
-
-  document.addEventListener('keyup', function({ keyCode }) {
-  });
-
-  function playNote(midiNote) {
-  }
-
-  function stopNote(midiNote) {
-  }
-
-  function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
-  }
 }
