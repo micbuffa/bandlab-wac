@@ -5,4 +5,7 @@ import { useSoundbank } from './sampler.js';
 (async function() {
   const piano = renderInstrument();
   document.querySelector('main').append(piano);
+
+  const soundbankStore = await downloadSoundbank();
+  useSoundbank(soundbankStore, piano);
 })();
