@@ -43,3 +43,11 @@ npm start
 
 1. Include crossfade to existing audio buffers
 2. Use Web Audio loop feature
+
+#### Harmonizer
+
+1. Call harmonizer functions when playing notes on the sampler
+
+#### Effects
+
+1. Connect freeverb effect node to the sampler output
