@@ -26,7 +26,7 @@ npm start
 
 #### Sampler
 
-1. Bind key events
+1. Bind keyboard events
 2. Play sample files
 
 #### Velocity envelope
