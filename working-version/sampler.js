@@ -118,7 +118,9 @@ export function useSoundbank(soundbank, keyboardEl) {
     }
 
     if (heldNotes.has(midiNote)) {
-      heldNotes.get(midiNote).stop();
+      const note = heldNotes.get(midiNote);
+      note.source.stop(audioCtx.currentTime + 0.1);
+      note.releaseGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
       heldNotes.delete(midiNote);
       keyboardEl.querySelector(`[data-midi-note="${midiNote}"]`).classList.remove('active');
     }
@@ -126,6 +128,9 @@ export function useSoundbank(soundbank, keyboardEl) {
 
   function createBufferSource(midiNote, velocity = MAX_VELOCITY) {
     const source = audioCtx.createBufferSource();
+    const velocityGain = audioCtx.createGain();
+    const releaseGain = audioCtx.createGain();
+
     const sample = soundbank.samples.find(sample => sample.minRange >= midiNote && sample.maxRange >= midiNote || sample.midiNumber === midiNote);
     source.buffer = sample.audioBuffer;
     source.playbackRate.value = getPlaybackRate(midiNote - sample.midiNumber)
@@ -136,14 +141,15 @@ export function useSoundbank(soundbank, keyboardEl) {
       source.loopEnd = sample.loopEnd;
     }
 
-    const velocityGain = audioCtx.createGain();
-    velocityGain.gain.value = velocity / MAX_VELOCITY;
-    velocityGain.connect(audioCtx.destination);
-
-    source.connect(velocityGain);
     source.start();
+    source.connect(velocityGain);
 
-    return source;
+    velocityGain.gain.value = velocity / MAX_VELOCITY;
+    velocityGain.connect(releaseGain);
+
+    releaseGain.connect(audioCtx.destination);
+
+    return { source, velocityGain, releaseGain };
   }
 }
 
