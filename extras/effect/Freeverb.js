@@ -1,5 +1,5 @@
-import AllpassFilter from './AllpassFilter';
-import LowpassCombFilter from './LowpassCombFilter';
+import AllpassFilter from './AllpassFilter.js';
+import LowpassCombFilter from './LowpassCombFilter.js';
 
 // All delay times in the below filter tunings must be bigger numbers than 128/44100
 const combFilterTunings = [1557 / 44100, 1617 / 44100, 1491 / 44100, 1422 / 44100, 1277 / 44100, 1356 / 44100, 1188 / 44100, 1116 / 44100];

@@ -1,4 +1,4 @@
-import Lfo from './Lfo';
+import Lfo from './Lfo.js';
 
 export default function Chorus(audioContext) {
   const node = audioContext.createGain();

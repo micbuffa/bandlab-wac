@@ -1,5 +1,6 @@
 import { keyboard } from './instrument.js';
 import { generateRootHarmony } from './harmonizer.js';
+import Freeverb from './extras/effect/Freeverb.js';
 
 export const audioCtx = new AudioContext();
 
