@@ -16,6 +16,7 @@ export async function downloadSoundbank() {
           .then(audioBuffer => {
 
             if (sample.loopStart && sample.loopEnd) {
+              // @NB: Only use includeCrossfade(); on deployment of samples in your app - here for demo
               sample.audioBuffer = includeCrossfade(audioBuffer, sample);
             } else {
               sample.audioBuffer = audioBuffer;
