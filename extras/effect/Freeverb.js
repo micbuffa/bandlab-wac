@@ -1,3 +1,14 @@
+// https://ccrma.stanford.edu/~jos/pasp/Freeverb.html
+
+// Original web audio implementation for Tone.js by Yotam Mann
+// https://github.com/tambien
+// https://tonejs.github.io/docs/
+
+// NPM version by Matt McKegg
+// https://github.com/mmckegg/freeverb
+
+// Slightly updated implemenation for bandlab-sampler
+
 import AllpassFilter from './AllpassFilter.js';
 import LowpassCombFilter from './LowpassCombFilter.js';
 
