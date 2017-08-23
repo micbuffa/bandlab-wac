@@ -1,6 +1,6 @@
 import { keyboard } from './instrument.js';
 import { generateRootHarmony } from './harmonizer.js';
-import Freeverb from './extras/effect/Freeverb.js';
+import Freeverb from '../extras/effect/Freeverb.js';
 
 export const audioCtx = new AudioContext();
 
@@ -70,6 +70,15 @@ const CODE_TO_KEY = {
   221: ']',
   222: '\''
 };
+
+const freeverb = new Freeverb(audioCtx);
+freeverb.roomSize = 0.8;
+freeverb.dampening = 8000;
+freeverb.spread = 0;
+freeverb.wetDryMix = 0.2;
+
+freeverb.connect(audioCtx.destination);
+
 
 export function useSoundbank(soundbank, keyboardEl) {
   const heldNotes = new Map();
@@ -147,7 +156,7 @@ export function useSoundbank(soundbank, keyboardEl) {
     velocityGain.gain.value = velocity / MAX_VELOCITY;
     velocityGain.connect(releaseGain);
 
-    releaseGain.connect(audioCtx.destination);
+    releaseGain.connect(freeverb);
 
     return { source, velocityGain, releaseGain };
   }
