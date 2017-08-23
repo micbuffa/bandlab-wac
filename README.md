@@ -21,3 +21,25 @@ To start the development server:
 npm install
 npm start
 ```
+
+### Tutorial
+
+#### Sampler
+
+1. Bind key events
+2. Play sample files
+
+#### Velocity envelope
+
+1. Connect a gain node
+2. Pass velocity parameter
+
+#### Pitch-shift
+
+1. Use pitch-shift formula
+2. Parse soundbank JSON
+
+#### Infinite sustain
+
+1. Include crossfade to existing audio buffers
+2. Use Web Audio loop feature
